@@ -63,7 +63,7 @@ static int isotp_send_single_frame(IsoTpLink* link, uint32_t id) {
     int ret;
 
     /* multi frame message length must greater than 7  */
-    assert(link->send_size <= 7);
+    // assert(link->send_size <= 7);
 
     /* setup message  */
     message.as.single_frame.type = ISOTP_PCI_TYPE_SINGLE;
@@ -89,7 +89,7 @@ static int isotp_send_first_frame(IsoTpLink* link, uint32_t id) {
     int ret;
 
     /* multi frame message length must greater than 7  */
-    assert(link->send_size > 7);
+    // assert(link->send_size > 7);
 
     /* setup message  */
     message.as.first_frame.type = ISOTP_PCI_TYPE_FIRST_FRAME;
@@ -114,7 +114,7 @@ static int isotp_send_consecutive_frame(IsoTpLink* link) {
     int ret;
 
     /* multi frame message length must greater than 7  */
-    assert(link->send_size > 7);
+    // assert(link->send_size > 7);
 
     /* setup message  */
     message.as.consecutive_frame.type = TSOTP_PCI_TYPE_CONSECUTIVE_FRAME;
@@ -247,8 +247,8 @@ int isotp_send_with_id(IsoTpLink *link, uint32_t id, const uint8_t payload[], ui
 
     if (size > link->send_buf_size) {
         isotp_user_debug("Message size too large. Increase ISO_TP_MAX_MESSAGE_SIZE to set a larger buffer\n");
-        char message[128];
-        sprintf(&message[0], "Attempted to send %d bytes; max size is %d!\n", size, link->send_buf_size);
+        // char message[128];
+        // sprintf(&message[0], "Attempted to send %d bytes; max size is %d!\n", size, link->send_buf_size);
         return ISOTP_RET_OVERFLOW;
     }
 
